@@ -11,6 +11,7 @@ import UIKit
 // MARK: -Externtion for AleartBOx
 
 extension UIViewController{
+    //Function that show alert
     func popUPAleart(
         title:String,
         message:String,

@@ -24,7 +24,7 @@ class signUPViewController: UIViewController {
     @IBAction func createAccout(_ sender: UIButton) {
         if (firstName.text == "" || lastName.text == "" || countryName.text == "" || riginName.text == "" || email.text == "" || password.text == "" || confirmPass.text == "") {
             
-            self.popUPAleart(title: "Sign Up", message: "Please Enter Text Below", actionTitle: ["Okay", "Cancel", "Try Again"], actionStyles: [.default, .cancel, .default], action: [
+            self.popUPAleart(title: "Sign Up", message: "Please Enter Text", actionTitle: ["Okay", "Cancel", "Try Again"], actionStyles: [.default, .cancel, .default], action: [
                 { Okay in
                     print("okay is pressd")
                     
@@ -35,27 +35,23 @@ class signUPViewController: UIViewController {
                 }
             ])
         }
+        
+        if isValidEmail(emailID: email.text!) == false {
+            self.popUPAleart(title: "Email", message: "Please Enter Valid Email", actionTitle: ["Okay", "Cancel", ], actionStyles: [.default, .cancel, ], action: [
+                { Okay in
+                    print("okay is pressd")
+                    
+                },{ Cancel in
+                    print("Cancel is pressd")
+                }
+            ])
+        }
     }
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyBoardWhenTapped()
 
         // Do any additional setup after loading the view.
     }
- }
-
+}

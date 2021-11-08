@@ -10,6 +10,7 @@ import UIKit
 
 
 extension UIViewController{
+    //funtion that dismiss key board when you tap on any free space
     func hideKeyBoardWhenTapped() {
         let tab: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(keyBoarddismiss))
         tab.cancelsTouchesInView = false
