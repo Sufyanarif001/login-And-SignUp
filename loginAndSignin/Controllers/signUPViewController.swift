@@ -27,7 +27,6 @@ class signUPViewController: UIViewController {
             self.popUPAleart(title: "Sign Up", message: "Please Enter Text", actionTitle: ["Okay", "Cancel", "Try Again"], actionStyles: [.default, .cancel, .default], action: [
                 { Okay in
                     print("okay is pressd")
-                    
                 },{ Cancel in
                     print("Cancel is pressd")
                 },{ Try_Again in
@@ -35,6 +34,8 @@ class signUPViewController: UIViewController {
                 }
             ])
         }
+        
+        //vlidation for Email
         
         if isValidEmail(emailID: email.text!) == false {
             self.popUPAleart(title: "Email", message: "Please Enter Valid Email", actionTitle: ["Okay", "Cancel", ], actionStyles: [.default, .cancel, ], action: [
@@ -51,7 +52,32 @@ class signUPViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyBoardWhenTapped()
+        createDataPiker()
 
         // Do any additional setup after loading the view.
     }
+    // MARK: -function for DOB Picker
+    
+    let datePicker = UIDatePicker()
+    
+    func createDataPiker(){
+        riginName.textAlignment = .center
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed))
+        toolbar.setItems([doneButton], animated: true)
+        riginName.inputAccessoryView = toolbar
+        riginName.inputView = datePicker
+        datePicker.datePickerMode = .date
+        datePicker.preferredDatePickerStyle = .wheels
+    }
+    @objc func donePressed(){
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
+        let date = formatter.string(from: datePicker.date)
+        riginName.text = date
+        self.view.endEditing(true)
+    }
+    
 }
